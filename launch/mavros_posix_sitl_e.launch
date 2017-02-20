@@ -14,7 +14,8 @@
 
 
 <!-- arg name="fcu_url" default="serial:///dev/ttyUSB0:921600" -->
-<arg name="fcu_url" default="udp://:14540@127.0.0.1:14557" />
+<!-- arg name="fcu_url" default="udp://:14540@127.0.0.1:14557" -->
+<arg name="fcu_url" default="udp://:14540@192.168.1.36:14557" />
 <arg name="gcs_url" default="" />
 <arg name="tgt_system" default="1" />
 <arg name="tgt_component" default="1" />
@@ -59,8 +60,8 @@ args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) -e $(arg physi
 
 <node name="fixedtool" pkg="inrol_fixedtool" type="torque_fixedtool_sitl_e" output="screen">
 
-	<param name="gains/pos_P" value = "4.00"/>
-	<param name="gains/pos_D" value = "1.0"/>
+	<param name="gains/pos_P" value = "2.00"/>
+	<param name="gains/pos_D" value = "2.0"/>
 	<param name="gains/att_k_star" value = "0.1"/>
 
 	<param name="tool/d1" value = "0.1"/>
@@ -70,7 +71,7 @@ args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) -e $(arg physi
 	<!-- ctrl_mode true: !-->
 	<param name="ctrl_mode" value = "true" />
 	<!-- estimation_mode true: onboard estimation false: Based on true values from gazebo-->
-	<param name="estimation_mode" value = "false" />
+	<param name="estimation_mode" value = "true" />
 
 	<remap from = "/fixedtool/actuator_control" to = "/mavros/actuator_control" />
 
